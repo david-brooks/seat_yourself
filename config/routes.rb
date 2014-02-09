@@ -1,4 +1,14 @@
 SeatYourself::Application.routes.draw do
+ 
+  root to: 'home#home'
+
+  resources :restaurants do
+    resources :reservations, only: :create
+  end
+
+  resources :users, only: [:show, :new, :create]
+  resources :sessions, only: [:create, :destroy, :new]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
